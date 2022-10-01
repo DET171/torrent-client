@@ -79,21 +79,20 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+				"extraResources": [
+					"./node_modules/@electron/remote/**"
+				]
+			},
       "makers": [
         {
           "name": "@reforged/maker-appimage"
         },
         {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "torrent_client"
-          }
-        },
-        {
           "name": "@electron-forge/maker-zip",
           "platforms": [
-            "darwin"
+            "darwin",
+						"linux"
           ]
         },
         {

@@ -1,4 +1,3 @@
-const remote = window.require('@electron/remote');
 import Download from './components/Download';
 import { useState, useEffect } from 'react';
 import { Menu } from 'semantic-ui-react';

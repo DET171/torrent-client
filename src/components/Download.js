@@ -1,7 +1,5 @@
-const remote = window.require('@electron/remote');
 import downloadsFolder from 'downloads-folder';
 import moment from 'moment';
-import useInterval from '../useInterval';
 import { useState, useEffect } from 'react';
 import prettyBytes from '../prettyBytes';
 import { Input, Button, Table } from 'semantic-ui-react';
@@ -69,7 +67,7 @@ export default function Download() {
 			<Input
 				className='mt-5 w-full'
 				label={
-					<Button className='text-slate-800 bg-blue-200 hover:bg-blue-300 duration-300' onClick={() => download()}>Download Torrent</Button>
+					<Button className='text-slate-800 bg-red-200 hover:bg-red-300 duration-300' onClick={() => download()}>Download Torrent</Button>
 				}
 				placeholder='Download folder'
 				value={folder}

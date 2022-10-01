@@ -1,8 +1,14 @@
 const { app, BrowserWindow } = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path');
-require('electron-reload')('./**/*');
-require('@electron/remote/main').initialize();
+if (require('electron-squirrel-startup')) {
+	// eslint-disable-line global-require
+	app.quit();
+}
+if (isDev) {
+	require('electron-reload')('./**/*');
+}
+
 function createWindow() {
 	// Create the browser window.
 	const win = new BrowserWindow({
@@ -21,7 +27,6 @@ function createWindow() {
 			? 'http://localhost:8080'
 			: `file://${path.join(__dirname, '../build/index.html')}`,
 	);
-	require('@electron/remote/main').enable(win.webContents);
 }
 
 // This method will be called when Electron has finished
