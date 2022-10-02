@@ -1,6 +1,7 @@
 import Download from './components/Download';
 import { useState, useEffect } from 'react';
 import { Menu } from 'semantic-ui-react';
+import Seed from './components/Seed';
 
 
 function App() {
@@ -8,12 +9,12 @@ function App() {
 
 	return (
 		<div className='pb-5'>
-			<Menu className='rounded-none'>
+			<Menu className='rounded-none z-50 sticky top-0'>
 				<Menu.Item
 					name='download'
 					active={active === 'download'}
 					onClick={() => setActive('download')}
-				>Download Torrents</Menu.Item>
+				>Download Torrents &nbsp;<i className='fa-solid fa-download'></i></Menu.Item>
 				<Menu.Item
 					name='seed'
 					active={active === 'seed'}
@@ -21,6 +22,7 @@ function App() {
 				>Seed Files</Menu.Item>
 			</Menu>
 			{active === 'download' && <Download />}
+			{active === 'seed' && <Seed />}
 		</div>
 	);
 }

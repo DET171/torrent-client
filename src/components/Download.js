@@ -77,6 +77,13 @@ export default function Download() {
 				labelPosition='right'
 			/>
 
+			{data && (
+				<div className='grid my-8 grid-cols-3 text-center text-xl'>
+					<div><i className='fa-solid fa-arrow-down'></i>&nbsp;{prettyBytes(data.downloadSpeed)}/s</div>
+					<div><i className='fa-solid fa-arrow-up'></i>&nbsp;{prettyBytes(data.uploadSpeed)}/s</div>
+					<div><i className='fa-solid fa-person'></i>&nbsp;{data.numPeers} peers</div>
+				</div>
+			)}
 
 			<Table celled className='mt-5'>
 				<Table.Header>
@@ -98,24 +105,29 @@ export default function Download() {
 					))}
 				</Table.Body>
 			</Table>
-			{data && <ul className='text-center my-5'>
-				<li>{data && (data.done
-					? 'Downloaded'
-					: `Downloaded ${prettyBytes(data.downloaded)} of ${prettyBytes(data.length)} (${Math.round(data.progress * 100 * 100) / 100}%), ${remaining}`)}
-				</li>
-				<li>{data && `Upload Speed: ${prettyBytes(data.uploadSpeed)}`}</li>
-				<li>{data && `Download Speed: ${prettyBytes(data.downloadSpeed)}`}</li>
-				<li>{data && `Peers: ${data.numPeers}`}</li>
-				<li>{data && `Seed Ratio: ${data.ratio}`}</li>
-			</ul>}
-			{data && (<>
-				<h2 className='text-center text-2xl'>Trackers</h2>
-				<ul className='text-center'>
-					{data && data.announce.map((tracker) => (
-						<li key={tracker}>{tracker}</li>
+			{data && <div className='my-8'>
+				<div className='w-full h-6 bg-gray-500 rounded-full'>
+					<p className='text-center h-6'>{prettyBytes(data.downloaded)}/{prettyBytes(data.length)} ({Math.round(data.progress * 100 * 100) / 100}%), {remaining}</p>
+					<div className='h-6 -mt-6 bg-green-300 rounded-full duration-100' style={{
+						width: `${data ? data.progress * 100 : 0}%`,
+					}}></div>
+				</div>
+			</div>}
+			<h2 className='text-center text-2xl'>Trackers</h2>
+			<Table className='text-center'>
+				<Table.Header>
+					<Table.Row>
+						<Table.HeaderCell>Address</Table.HeaderCell>
+					</Table.Row>
+				</Table.Header>
+				<Table.Body>
+					{data && data.announce.map((url) => (
+						<Table.Row key={url}>
+							<Table.Cell>{url}</Table.Cell>
+						</Table.Row>
 					))}
-				</ul>
-			</>)}
+				</Table.Body>
+			</Table>
 		</div>
 	);
 }

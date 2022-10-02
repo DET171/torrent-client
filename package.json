@@ -17,10 +17,12 @@
     "@testing-library/user-event": "^13.2.1",
     "asar": "^3.2.0",
     "downloads-folder": "^3.0.3",
+    "drag-drop": "^7.2.0",
     "electron-is-dev": "^2.0.0",
     "electron-reload": "^2.0.0-alpha.1",
     "electron-squirrel-startup": "^1.0.0",
     "got": "^12.5.1",
+    "lottie-react": "^2.3.1",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -39,7 +41,7 @@
     "craco:build": "craco build",
     "start": "electron-forge start",
     "package": "electron-forge package",
-		"dist": "electron-builder",
+    "dist": "electron-builder",
     "make": "electron-forge make"
   },
   "eslintConfig": {
