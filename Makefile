@@ -4,7 +4,7 @@ install_deps:
 
 build_static:
 	@echo "Building static assets..."
-	@yarn craco:build
+	@yarn build
 
 appimage: build_static
 	@echo "Building AppImage..."

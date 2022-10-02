@@ -5,6 +5,10 @@
   "license": "MIT",
   "homepage": "./",
   "description": "A torrent client which uses webtorrent",
+	"repository": {
+    "type": "git",
+		"url": "https://github.com/DET171/torrent-client"
+	},
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.4.5",
@@ -38,7 +42,7 @@
     "postinstall": "semantic-ui-css-patch",
     "craco:start": "craco start",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "craco:build": "craco build",
+    "build": "craco build",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "dist": "electron-builder",
@@ -85,7 +89,13 @@
   "build": {
     "appId": "com.electron.torrent-client",
     "productName": "Torrent Client",
-    "copyright": "Copyright © 2022 mrgeek484@gmail.com"
+    "copyright": "Copyright © 2022 mrgeek484@gmail.com",
+		"linux": {
+			"target": "AppImage"
+		},
+		"win": {
+			"target": "nsis"
+		}
   },
   "config": {
     "forge": {
