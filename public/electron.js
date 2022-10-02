@@ -1,10 +1,7 @@
 const { app, BrowserWindow } = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path');
-if (require('electron-squirrel-startup')) {
-	// eslint-disable-line global-require
-	app.quit();
-}
+
 if (isDev) {
 	require('electron-reload')('./**/*');
 }

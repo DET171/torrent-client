@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "main": "public/electron.js",
   "license": "MIT",
+  "homepage": "./",
   "description": "A torrent client which uses webtorrent",
   "private": true,
   "dependencies": {
@@ -38,6 +39,7 @@
     "craco:build": "craco build",
     "start": "electron-forge start",
     "package": "electron-forge package",
+		"dist": "electron-builder",
     "make": "electron-forge make"
   },
   "eslintConfig": {
@@ -68,6 +70,7 @@
     "autoprefixer": "^10.4.12",
     "concurrently": "^7.4.0",
     "electron": "^21.0.1",
+    "electron-builder": "^23.3.3",
     "eslint": ">=5.16.0",
     "eslint-config-berry": "^0.15.5",
     "eslint-config-google": "^0.14.0",
@@ -77,13 +80,18 @@
     "wait-on": "^6.0.1",
     "webpack-node-externals": "^3.0.0"
   },
+  "build": {
+    "appId": "com.electron.torrent-client",
+    "productName": "Torrent Client",
+    "copyright": "Copyright © 2022 mrgeek484@gmail.com"
+  },
   "config": {
     "forge": {
       "packagerConfig": {
-				"extraResources": [
-					"./node_modules/@electron/remote/**"
-				]
-			},
+        "extraResources": [
+          "./node_modules/@electron/remote/**"
+        ]
+      },
       "makers": [
         {
           "name": "@reforged/maker-appimage"
@@ -92,7 +100,7 @@
           "name": "@electron-forge/maker-zip",
           "platforms": [
             "darwin",
-						"linux"
+            "linux"
           ]
         },
         {

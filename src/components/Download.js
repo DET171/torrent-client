@@ -77,6 +77,7 @@ export default function Download() {
 				labelPosition='right'
 			/>
 
+
 			<Table celled className='mt-5'>
 				<Table.Header>
 					<Table.Row>
@@ -97,10 +98,24 @@ export default function Download() {
 					))}
 				</Table.Body>
 			</Table>
-			<p>{data && (data.done
-				? 'Downloaded'
-				: `Downloaded ${prettyBytes(data.downloaded)} of ${prettyBytes(data.length)} (${Math.round(data.progress * 100 * 100) / 100}%), ${remaining}`)}
-			</p>
+			{data && <ul className='text-center my-5'>
+				<li>{data && (data.done
+					? 'Downloaded'
+					: `Downloaded ${prettyBytes(data.downloaded)} of ${prettyBytes(data.length)} (${Math.round(data.progress * 100 * 100) / 100}%), ${remaining}`)}
+				</li>
+				<li>{data && `Upload Speed: ${prettyBytes(data.uploadSpeed)}`}</li>
+				<li>{data && `Download Speed: ${prettyBytes(data.downloadSpeed)}`}</li>
+				<li>{data && `Peers: ${data.numPeers}`}</li>
+				<li>{data && `Seed Ratio: ${data.ratio}`}</li>
+			</ul>}
+			{data && (<>
+				<h2 className='text-center text-2xl'>Trackers</h2>
+				<ul className='text-center'>
+					{data && data.announce.map((tracker) => (
+						<li key={tracker}>{tracker}</li>
+					))}
+				</ul>
+			</>)}
 		</div>
 	);
 }
