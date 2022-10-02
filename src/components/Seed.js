@@ -1,15 +1,9 @@
-import downloadsFolder from 'downloads-folder';
-import moment from 'moment';
 import { useState, useEffect } from 'react';
-import Lottie from 'lottie-react';
-import prettyBytes from '../prettyBytes';
-import { Input, Button, Table } from 'semantic-ui-react';
-import loadingData from '../misc/loading.json';
 import webtorrent from 'webtorrent';
 import dragDrop from 'drag-drop';
 
 export default function Seed() {
-	const [loading, setLoading] = useState(false);
+	// const [loading, setLoading] = useState(false);
 	const [torrent, setTorrent] = useState(null);
 	const client = new webtorrent();
 
@@ -48,13 +42,6 @@ export default function Seed() {
 					</div>
 				)}
 			</div>
-			{loading && (
-				<div className='flex justify-center items-center h-full'>
-					<div className='flex flex-col items-center'>
-						<Lottie animationData={loadingData} />
-					</div>
-				</div>
-			)}
 		</div>
 	);
 }

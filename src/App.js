@@ -1,5 +1,5 @@
 import Download from './components/Download';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu } from 'semantic-ui-react';
 import Seed from './components/Seed';
 
